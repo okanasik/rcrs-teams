@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ait1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ait/ait.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

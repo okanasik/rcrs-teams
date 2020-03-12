@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="rescuecore">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/clear.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/standard.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/sample.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/kernel.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/human.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/collapse.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/ignition.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/handy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/misc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/rescuecore2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/traffic3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/maps.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/gis2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/rescuecore/resq-fire.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

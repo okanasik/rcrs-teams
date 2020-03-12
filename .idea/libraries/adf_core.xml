@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="adf-core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/rio/library/rescue/adf/adf-core.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

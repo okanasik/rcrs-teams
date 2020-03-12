@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="util1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ait/library/util/jackson-dataformat-msgpack-0.8.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/jsr305-3.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/msgpack-core-0.8.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/guava-20.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/jackson-annotations-2.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/jackson-core-2.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/jackson-databind-2.8.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/commons-math3-3.4.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

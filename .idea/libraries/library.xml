@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="library">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ait/library/jts-core-1.16.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/bms-1.0.1-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/visual-debugger-client.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

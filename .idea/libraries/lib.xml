@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/rescuecore.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/junit-4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/jaxen-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/RNAViewR.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/javaGeom-0.9.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/jsi-1.0b2p1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/visual-debugger-client.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/jts-1.11.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/jscience-4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/xml-0.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/VD Dto.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/dom4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/uncommons-maths-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mrl/library/team/lib/trove-0.1.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="default2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/resq-fire.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/jaxen-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/jcommon-1.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/trove-0.1.8.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/dom4j.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/jfreechart-1.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/rescuecore.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/xml-0.0.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/log4j-1.2.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/jsi-1.0b2p1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/jscience-4.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/junit-4.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/uncommons-maths-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/util/default/jts-1.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

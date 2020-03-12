@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="rescuecore2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/human.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/maps.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/gis2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/misc.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/sample.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/standard.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/ignition.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/collapse.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/kernel.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/traffic3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/handy.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/rescuecore2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/resq-fire.jar!/" />
+      <root url="jar://$PROJECT_DIR$/ait/library/rescue/rescuecore/clear.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
