@@ -24,14 +24,11 @@ import adf.component.module.complex.HumanDetector;
 import adf.component.module.complex.Search;
 import adf.component.tactics.TacticsAmbulanceTeam;
 import adf.sample.tactics.utils.MessageTool;
-import data.ActionType;
 import data.Dataset;
 import rescuecore2.standard.entities.AmbulanceTeam;
 import rescuecore2.standard.entities.StandardEntityURN;
 import rescuecore2.worldmodel.EntityID;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,8 +47,8 @@ public class SampleTacticsAmbulanceTeam extends TacticsAmbulanceTeam
 
     private CommunicationMessage recentCommand;
     private Boolean isVisualDebug;
-
     private Dataset dataset;
+    private boolean isRecordData;
 
     @Override
     public void initialize(AgentInfo agentInfo, WorldInfo worldInfo, ScenarioInfo scenarioInfo, ModuleManager moduleManager, MessageManager messageManager, DevelopData developData)
@@ -107,8 +104,12 @@ public class SampleTacticsAmbulanceTeam extends TacticsAmbulanceTeam
         registerModule(this.actionExtMove);
         registerModule(this.commandExecutorAmbulance);
         registerModule(this.commandExecutorScout);
-        dataset = new Dataset();
-        dataset.start(scenarioInfo.getScenarioName(), scenarioInfo.getTeam(), agentInfo.getID().getValue(), agentInfo.me().getURN());
+        isRecordData = scenarioInfo.getRawConfig().getBooleanValue("dataset");
+
+        if (isRecordData) {
+            dataset = new Dataset();
+            dataset.start(worldInfo, agentInfo, scenarioInfo.getScenarioName(), scenarioInfo.getTeam());
+        }
     }
 
     @Override
@@ -193,26 +194,17 @@ public class SampleTacticsAmbulanceTeam extends TacticsAmbulanceTeam
             }
         }
         // autonomous
-        dataset.addFrame(worldInfo, agentInfo);
-        EntityID target = this.humanDetector.calc().getTarget();
-        data.Action datasetAction = new data.Action();
-
-        if (target == null) {
-            datasetAction.type = data.ActionType.NULL;
-            datasetAction.targetId = 0;
-        } else {
-            datasetAction.type = ActionType.LOAD;
-            datasetAction.targetId = target.getValue();
+        if (isRecordData) {
+            dataset.addFrame(worldInfo, agentInfo);
         }
-        dataset.addAction(datasetAction);
 
-        if (agentInfo.getTime() == scenarioInfo.getKernelTimesteps()) {
-            SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMdd#HH:mm:ss");
-            String datasetFileName = scenarioInfo.getScenarioName()+"_"+agentInfo.getID()+"_"+timeFormat.format(new Date());
-            datasetFileName = "../dataset/" + datasetFileName;
-            System.out.println(agentInfo.getID() + ": saving the file:" + datasetFileName);
-            dataset.saveAsJson(datasetFileName);
-            System.out.println(agentInfo.getID() + ": file is saved!");
+        EntityID target = this.humanDetector.calc().getTarget();
+
+        if (isRecordData) {
+            dataset.addAction(worldInfo, agentInfo, scenarioInfo, target);
+            if (dataset.isSaved()) {
+                dataset = null;
+            }
         }
 
         Action action = this.actionTransport.setTarget(target).calc().getAction();

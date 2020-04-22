@@ -41,6 +41,7 @@ public class AITBuildingDetector extends BuildingDetector {
     private final Clustering clustering;
     private final Random random = new Random();
     private EntityID result = null;
+    private String info = "";
 
     // Debug
     // private final VDClient vdclient = VDClient.getInstance();
@@ -113,6 +114,7 @@ public class AITBuildingDetector extends BuildingDetector {
     @Override
     public BuildingDetector calc()
     {
+        selectionInfo.clear();
         List<EntityID> fireBuildingIDs = this.getBuildingIDsOnFire(
                 this.worldInfo.getEntityIDsOfType(BUILDING, GAS_STATION,
                 AMBULANCE_CENTRE, FIRE_STATION, POLICE_OFFICE));
@@ -123,10 +125,12 @@ public class AITBuildingDetector extends BuildingDetector {
         this.result = this.getTargetIDInFireCluster(activeAgentIDs);
         if (this.result == null)
         {
+            selectionInfo.put("trace2", "getTargetIDOnFieryness");
             this.result = this.getTargetIDOnFieryness(fireBuildingIDs, activeAgentIDs);
         }
         if (this.result == null)
         {
+            selectionInfo.put("trace3", "getTargetIDOnCloseness");
             this.result = this.getTargetIDOnCloseness(fireBuildingIDs, activeAgentIDs);
         }
         if (this.result != null) this.out("TARGET #" + this.result);
@@ -135,6 +139,7 @@ public class AITBuildingDetector extends BuildingDetector {
 
     private EntityID getTargetIDInFireCluster(List<EntityID> activeAgentIDs)
     {
+        selectionInfo.put("trace1", "getTargetIDInFireCluster");
         if (activeAgentIDs.isEmpty()) { return null; }
 
         int clusterSize = this.clustering.getClusterNumber();
@@ -229,15 +234,15 @@ public class AITBuildingDetector extends BuildingDetector {
 
     private List<EntityID> getAgentIDsHavingWater(Collection<EntityID> agentIDs)
     {
-        List<EntityID> result = new ArrayList<>(agentIDs);
+        List<EntityID> result = new ArrayList<>(agentIDs.size());
         for (EntityID id : agentIDs)
         {
             StandardEntity entity = this.worldInfo.getEntity(id);
             if (!(entity instanceof FireBrigade)) { continue; }
             FireBrigade agent = (FireBrigade) entity;
-            if (agent.getWater() == 0)
+            if (agent.getWater() > 0)
             {
-                result.remove(agent.getID());
+                result.add(agent.getID());
             }
         }
         return result;
@@ -290,11 +295,16 @@ public class AITBuildingDetector extends BuildingDetector {
             if (fieryness == 3) { infernoBuildingIDs.add(entity.getID()); }
         }
 
+        selectionInfo.put("method", "getTargetInNaturalOrderOfFireyness");
+        selectionInfo.put("type", "closest");
+
         if (!heatingBuildingIDs.isEmpty())
         {
             EntityID ret = this.getCloseBuildingID(agentIDs, heatingBuildingIDs);
             if (ret == null)
             {
+                selectionInfo.put("type", "random");
+                selectionInfo.put("fieryness", "heating");
                 return heatingBuildingIDs.get(this.random.nextInt(heatingBuildingIDs.size()));
             }
             return ret;
@@ -304,6 +314,8 @@ public class AITBuildingDetector extends BuildingDetector {
             EntityID ret = this.getCloseBuildingID(agentIDs, burningBuildingIDs);
             if (ret == null)
             {
+                selectionInfo.put("type", "random");
+                selectionInfo.put("fieryness", "burning");
                 return burningBuildingIDs.get(this.random.nextInt(burningBuildingIDs.size()));
             }
             return ret;
@@ -313,6 +325,8 @@ public class AITBuildingDetector extends BuildingDetector {
             EntityID ret = this.getCloseBuildingID(agentIDs, infernoBuildingIDs);
             if (ret == null)
             {
+                selectionInfo.put("type", "random");
+                selectionInfo.put("fieryness", "inferno");
                 return infernoBuildingIDs.get(this.random.nextInt(infernoBuildingIDs.size()));
             }
             return ret;
@@ -396,11 +410,11 @@ public class AITBuildingDetector extends BuildingDetector {
 
     private void out(String str)
     {
-        String ret;
-        ret  = "🚒  [" + String.format("%10d", this.agentInfo.getID().getValue()) + "]";
-        ret += " BUILDING-DETECTOR ";
-        ret += "@" + String.format("%3d", this.agentInfo.getTime());
-        ret += " -> ";
+//        String ret;
+//        ret  = "🚒  [" + String.format("%10d", this.agentInfo.getID().getValue()) + "]";
+//        ret += " BUILDING-DETECTOR ";
+//        ret += "@" + String.format("%3d", this.agentInfo.getTime());
+//        ret += " -> ";
 //        System.out.println(ret + str);
     }
 }

@@ -52,6 +52,7 @@ public class SampleTacticsPoliceForce extends TacticsPoliceForce
 
 	private Boolean isVisualDebug;
 	private Dataset dataset;
+	private boolean isRecordData;
 
     @Override
     public void initialize(AgentInfo agentInfo, WorldInfo worldInfo, ScenarioInfo scenarioInfo, ModuleManager moduleManager, MessageManager messageManager, DevelopData developData)
@@ -102,8 +103,12 @@ public class SampleTacticsPoliceForce extends TacticsPoliceForce
         registerModule(this.commandExecutorPolice);
         registerModule(this.commandExecutorScout);
 
-        dataset = new Dataset();
-        dataset.start(scenarioInfo.getScenarioName(), scenarioInfo.getTeam(), agentInfo.getID().getValue(), agentInfo.me().getURN());
+        isRecordData = scenarioInfo.getRawConfig().getBooleanValue("dataset");
+
+        if (isRecordData) {
+            dataset = new Dataset();
+            dataset.start(worldInfo, agentInfo, scenarioInfo.getScenarioName(), scenarioInfo.getTeam());
+        }
     }
 
     @Override
@@ -189,26 +194,16 @@ public class SampleTacticsPoliceForce extends TacticsPoliceForce
             }
         }
         // autonomous
-        dataset.addFrame(worldInfo, agentInfo);
+        if (isRecordData) {
+            dataset.addFrame(worldInfo, agentInfo);
+        }
         EntityID target = this.roadDetector.calc().getTarget();
 
-        data.Action datasetAction = new data.Action();
-        if (target == null) {
-            datasetAction.type = data.ActionType.NULL;
-            datasetAction.targetId = 0;
-        } else {
-            datasetAction.type = ActionType.CLEAR;
-            datasetAction.targetId = target.getValue();
-        }
-        dataset.addAction(datasetAction);
-
-        if (agentInfo.getTime() == scenarioInfo.getKernelTimesteps()) {
-            SimpleDateFormat timeFormat = new SimpleDateFormat("yyyyMMdd#HH:mm:ss");
-            String datasetFileName = scenarioInfo.getScenarioName()+"_"+agentInfo.getID()+"_"+timeFormat.format(new Date());
-            datasetFileName = "../dataset/" + datasetFileName;
-            System.out.println(agentInfo.getID() + ": saving the file:" + datasetFileName);
-            dataset.saveAsJson(datasetFileName);
-            System.out.println(agentInfo.getID() + ": file is saved!");
+        if (isRecordData) {
+            dataset.addAction(worldInfo, agentInfo, scenarioInfo, target);
+            if (dataset.isSaved()) {
+                dataset = null;
+            }
         }
 
         Action action = this.actionExtClear.setTarget(target).calc().getAction();
