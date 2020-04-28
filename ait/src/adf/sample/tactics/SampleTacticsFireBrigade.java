@@ -23,6 +23,7 @@ import rescuecore2.worldmodel.EntityID;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import adf.agent.action.fire.ActionExtinguish;
 import adf.agent.action.fire.ActionRefill;
@@ -198,14 +199,20 @@ public class SampleTacticsFireBrigade extends TacticsFireBrigade
         }
         // autonomous\
         if (isRecordData) {
-            dataset.addFrame(worldInfo, agentInfo);
+            dataset.addFrame(worldInfo, agentInfo, messageTool.getMessagedEntities());
         }
 
         EntityID target = this.buildingDetector.calc().getTarget();
 
         if (isRecordData) {
-            dataset.addAction(worldInfo, agentInfo, scenarioInfo, target);
             dataset.addInfo(agentInfo, this.buildingDetector.getSelectionInfo());
+            String buildignsOnFire = worldInfo.getFireBuildingIDs().stream().map(EntityID::toString).collect(Collectors.joining(", ", "", ""));
+            dataset.addInfo(agentInfo, "buildingsOnFire", buildignsOnFire);
+            String messagedEntities = messageTool.getMessagedEntities().stream().map(EntityID::toString).collect(Collectors.joining(", ", "", ""));
+            dataset.addInfo(agentInfo, "messagedEntities", messagedEntities);
+            String changedEntities = worldInfo.getChanged().getChangedEntities().stream().map(EntityID::toString).collect(Collectors.joining(", ", "", ""));
+            dataset.addInfo(agentInfo, "changedEntities", changedEntities);
+            dataset.addAction(worldInfo, agentInfo, scenarioInfo, target);
             if (dataset.isSaved()) {
                 dataset = null;
             }

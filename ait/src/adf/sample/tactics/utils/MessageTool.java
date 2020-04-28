@@ -46,6 +46,8 @@ public class MessageTool
 
     private EntityID dominanceAgentID;
 
+    private Set<EntityID> messagedEntities;
+
     public MessageTool(ScenarioInfo scenarioInfo, DevelopData developData)
     {
         this.developData = developData;
@@ -65,10 +67,12 @@ public class MessageTool
         this.receivedPassableRoads = new HashSet<>();
 
         this.dominanceAgentID = new EntityID(0);
+        this.messagedEntities = new HashSet<>();
     }
 
     public void reflectMessage(AgentInfo agentInfo, WorldInfo worldInfo, ScenarioInfo scenarioInfo, MessageManager messageManager)
     {
+        messagedEntities.clear();
         Set<EntityID> changedEntities = worldInfo.getChanged().getChangedEntities();
         changedEntities.add(agentInfo.getID());
         int time = agentInfo.getTime();
@@ -76,7 +80,10 @@ public class MessageTool
         {
             StandardEntity entity = null;
             entity = MessageUtil.reflectMessage(worldInfo, (StandardMessage) message);
-            if (entity != null) { this.receivedTimeMap.put(entity.getID(), time); }
+            if (entity != null) {
+                this.receivedTimeMap.put(entity.getID(), time);
+                messagedEntities.add(entity.getID());
+            }
         }
     }
 
@@ -384,5 +391,9 @@ public class MessageTool
         double dx = toX - fromX;
         double dy = toY - fromY;
         return (int) Math.hypot(dx, dy);
+    }
+
+    public Set<EntityID> getMessagedEntities() {
+        return messagedEntities;
     }
 }

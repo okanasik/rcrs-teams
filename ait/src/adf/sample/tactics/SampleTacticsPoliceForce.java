@@ -195,7 +195,7 @@ public class SampleTacticsPoliceForce extends TacticsPoliceForce
         }
         // autonomous
         if (isRecordData) {
-            dataset.addFrame(worldInfo, agentInfo);
+            dataset.addFrame(worldInfo, agentInfo, messageTool.getMessagedEntities());
         }
         EntityID target = this.roadDetector.calc().getTarget();
 

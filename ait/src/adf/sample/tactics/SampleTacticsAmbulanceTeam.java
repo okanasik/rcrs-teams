@@ -195,7 +195,7 @@ public class SampleTacticsAmbulanceTeam extends TacticsAmbulanceTeam
         }
         // autonomous
         if (isRecordData) {
-            dataset.addFrame(worldInfo, agentInfo);
+            dataset.addFrame(worldInfo, agentInfo, messageTool.getMessagedEntities());
         }
 
         EntityID target = this.humanDetector.calc().getTarget();
