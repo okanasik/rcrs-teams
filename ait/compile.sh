@@ -12,4 +12,4 @@ cd src
 javac -encoding UTF-8 -classpath "${CP}." -d ../build/ `find ./ -name '*.java'` && echo Done. || echo Failed.
 
 cd ../build
-jar cvf ../ait.jar .
+jar cf ../ait.jar .
