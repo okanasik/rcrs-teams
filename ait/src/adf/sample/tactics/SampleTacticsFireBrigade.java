@@ -206,12 +206,6 @@ public class SampleTacticsFireBrigade extends TacticsFireBrigade
 
         if (isRecordData) {
             dataset.addInfo(agentInfo, this.buildingDetector.getSelectionInfo());
-            String buildignsOnFire = worldInfo.getFireBuildingIDs().stream().map(EntityID::toString).collect(Collectors.joining(", ", "", ""));
-            dataset.addInfo(agentInfo, "buildingsOnFire", buildignsOnFire);
-            String messagedEntities = messageTool.getMessagedEntities().stream().map(EntityID::toString).collect(Collectors.joining(", ", "", ""));
-            dataset.addInfo(agentInfo, "messagedEntities", messagedEntities);
-            String changedEntities = worldInfo.getChanged().getChangedEntities().stream().map(EntityID::toString).collect(Collectors.joining(", ", "", ""));
-            dataset.addInfo(agentInfo, "changedEntities", changedEntities);
             dataset.addAction(worldInfo, agentInfo, scenarioInfo, target);
             if (dataset.isSaved()) {
                 dataset = null;
