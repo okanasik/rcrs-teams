@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ait/ait.iml" filepath="$PROJECT_DIR$/ait/ait.iml" />
-      <module fileurl="file://$PROJECT_DIR$/csu/csu.iml" filepath="$PROJECT_DIR$/csu/csu.iml" />
-      <module fileurl="file://$PROJECT_DIR$/mrl/mrl.iml" filepath="$PROJECT_DIR$/mrl/mrl.iml" />
-      <module fileurl="file://$PROJECT_DIR$/rio/rio.iml" filepath="$PROJECT_DIR$/rio/rio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rcrs-teams.iml" filepath="$PROJECT_DIR$/rcrs-teams.iml" />
     </modules>
   </component>
 </project>
