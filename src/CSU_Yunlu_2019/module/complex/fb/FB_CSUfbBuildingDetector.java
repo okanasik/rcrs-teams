@@ -278,7 +278,8 @@ public class FB_CSUfbBuildingDetector  extends BuildingDetector{
                 this.result = this.calcTargetInWorld();
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            System.err.println("An exception is thrown:" + ex.getMessage());
+//            ex.printStackTrace();
         }
         return this;
     }

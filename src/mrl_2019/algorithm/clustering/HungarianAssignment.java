@@ -125,21 +125,26 @@ public class HungarianAssignment {
          * smallest element, compute an initial non-zero dual feasible solution
          * and create a greedy matching from workers to jobs of the cost matrix.
          */
-        reduce();
-        computeInitialFeasibleSolution();
-        greedyMatch();
+        int[] result = null;
+        try {
+            reduce();
+            computeInitialFeasibleSolution();
+            greedyMatch();
 
-        int w = fetchUnmatchedWorker();
-        while (w < dim) {
-            initializePhase(w);
-            executePhase();
-            w = fetchUnmatchedWorker();
-        }
-        int[] result = Arrays.copyOf(matchJobByWorker, rows);
-        for (w = 0; w < result.length; w++) {
-            if (result[w] >= cols) {
-                result[w] = -1;
+            int w = fetchUnmatchedWorker();
+            while (w < dim) {
+                initializePhase(w);
+                executePhase();
+                w = fetchUnmatchedWorker();
             }
+            result = Arrays.copyOf(matchJobByWorker, rows);
+            for (w = 0; w < result.length; w++) {
+                if (result[w] >= cols) {
+                    result[w] = -1;
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return result;
     }

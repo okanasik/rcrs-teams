@@ -93,6 +93,9 @@ public class MrlAmbulanceKMeans extends StaticClustering {
         });
 
         this.clusterSize = healthyAgents.size();
+        if (clusterSize == 0) {
+            return;
+        }
 
         Double[][] data = new Double[entities.size()][2];
         Map<Double[], StandardEntity> entityMap = new FastMap<Double[], StandardEntity>();
