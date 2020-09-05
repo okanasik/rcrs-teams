@@ -319,7 +319,7 @@ public class AITBuildingSearch extends Search
             if (!(agent instanceof Human)) { continue; }
 
             Human other = (Human) agent;
-            if (other.getPosition() != me.getPosition()) { continue; }
+            if (!other.getPosition().equals(me.getPosition())) { continue; }
             if (other.getID().getValue() > me.getID().getValue())
             {
                 shouldSendMessage = false;
